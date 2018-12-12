@@ -15,16 +15,16 @@ function getFilm() {
         function(res) {
             let movie = res.data;
             if (movie.Title == undefined) {
-                console.log("There was no movie found in our database.")
+                console.log("There was no movie found.")
             } else {
-                console.log(`\nThe title is "${movie.Title}".`);
-                console.log(`It came out in ${movie.Year}.`);
-                console.log(`IMDB rated it a ${movie.imdbRating}.`)
-                console.log(`Rotten Tomatoes gives it a rating of ${movie.Ratings[1].Value}.`)
-                console.log(`Country: ${movie.Country}.`)
-                console.log(`Langauges: ${movie.Language}.`)
-                console.log(`The plot is "${movie.Plot}"`)
-                console.log(`The main actors are: ${movie.Actors}.\n`)
+                console.log("The title is " + movie.Title);
+                console.log("It came out in" + movie.Year);
+                console.log("IMDB rated it a" + movie.imdbRating)
+                console.log("Rotten Tomatoes gives it a rating of" + movie.Ratings[1].Value)
+                console.log("Country:" + movie.Country)
+                console.log("Langauges:" + movie.Language)
+                console.log("The plot is " +movie.Plot)
+                console.log("The main actors are: " + movie.Actors)
         } 
     })
 }
@@ -37,7 +37,7 @@ function getBands() {
         function(res) {
             // console.log(res);
             if (res.data.length === 0 || res.data.errorMessage || res.data[0].venue === undefined) {
-                console.log("Sorry, no tour dates currently scheduled.")
+                console.log("NO TOUR DATES.")
             } else if (res.data.length > 0) {
                 for (let i = 0; i < res.data.length; i++) {    
                     if (res.data[i].venue.region === "") {
@@ -64,10 +64,10 @@ function getSong() {
         .then(function(response) {         
             for (let i = 0; i < response.tracks.items.length; i++) {
                 let spot = response.tracks.items[i];
-                        console.log(`\nArtist: ${spot.artists[0].name}`);
-                        console.log(`Title: ${spot.name}`);
-                        console.log(`Soundclip: ${spot.external_urls.spotify}`)
-                        console.log(`From the album, "${spot.album.name}."\n`)
+                        console.log("Artist:" + spot.artists[0].name);
+                        console.log("Title:" + spot.name);
+                        console.log("Soundclip:" + spot.external_urls.spotify)
+                        console.log("From the album, " +spot.album.name)
                     }  
         })
         .catch(function(err) {
@@ -80,7 +80,7 @@ function doWhat() {
     let fileName = 'random.txt';
     fs.readFile(fileName, 'utf8', function(error, data) {
         if (error) {
-            console.log(`lol u messed up, read the error dawg...${error}`)
+            console.log("you messed up" + error)
         }  
         let fileSplit = (data.split(","));
         if (fileSplit[0] === "movie-this") {
@@ -89,16 +89,16 @@ function doWhat() {
             function(res) {
             let movie = res.data;
             if (movie.Title == undefined) {
-                console.log("There was no movie found in our database.")
+                console.log("NO MOVIE FOUND.")
             } else {
-                console.log(`\nThe title is "${movie.Title}".`);
-                console.log(`It came out in ${movie.Year}.`);
-                console.log(`IMDB rated it a ${movie.imdbRating}.`)
-                console.log(`Rotten Tomatoes gives it a rating of ${movie.Ratings[1].Value}.`)
-                console.log(`Country: ${movie.Country}.`)
-                console.log(`Langauges: ${movie.Language}.`)
-                console.log(`The plot is "${movie.Plot}"`)
-                console.log(`The main actors are: ${movie.Actors}.\n`)
+                console.log("The title is " + movie.Title);
+                console.log("It came out in" + movie.Year);
+                console.log("IMDB rated it a " + movie.imdbRating)
+                console.log("Rotten Tomatoes gives it a rating of" + movie.Ratings[1].Value)
+                console.log("Country:" + movie.Country)
+                console.log("Langauges:" + movie.Language)
+                console.log("The plot is " + movie.Plot)
+                console.log("The main actors are:" + movie.Actors)
         } 
     })
         } else if (fileSplit[0] === "concert-this") {
@@ -107,7 +107,7 @@ function doWhat() {
             axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
                 function(res) {
                     if (res.data.length === 0 || res.data.errorMessage || res.data[0].venue === undefined) {
-                        console.log("Sorry, no tour dates currently scheduled.")
+                        console.log("NO TOUR DATES.")
                     } else if (res.data.length > 0) {
                         for (let i = 0; i < res.data.length; i++) {    
                             if (res.data[i].venue.region === "") {
@@ -128,10 +128,10 @@ function doWhat() {
             .then(function(response) {
                 for (let i = 0; i < response.tracks.items.length; i++) {
                     let spot = response.tracks.items[i];
-                            console.log(`\nArtist: ${spot.artists[0].name}`);
-                            console.log(`Title: ${spot.name}`);
-                            console.log(`Soundclip: ${spot.external_urls.spotify}`)
-                            console.log(`From the album, "${spot.album.name}."\n`)   
+                            console.log("Artist:" +spot.artists[0].name);
+                            console.log("Title:" + spot.name);
+                            console.log("Soundclip: " + spot.external_urls.spotify)
+                            console.log("From the album, " + spot.album.name)   
                 } 
             })
             .catch(function(err) {
