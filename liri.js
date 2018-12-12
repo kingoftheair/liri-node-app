@@ -5,7 +5,6 @@ let keys = require("./keys.js");
 let Spotify = require("node-spotify-api");
 let fs = require('fs');
 
-/// OMDB - searching for movie data
 
 function getFilm() {
     let query = process.argv.slice(3).join(" ");
@@ -30,7 +29,6 @@ function getFilm() {
     })
 }
 
-/// BANDSINTOWN - searching for concert listings
 
 function getBands() {
     let artist = process.argv.slice(3).join(" ");
@@ -55,8 +53,6 @@ function getBands() {
 };
 
 
-/// SPOTIFY - searching for song details
-
 function getSong() {
     let song = process.argv.slice(3).join(" ");
     let spotify = new Spotify(keys.spotify);
@@ -79,7 +75,6 @@ function getSong() {
     });
 }
 
-/// READ RANDOM.TXT - grabs data written in .txt file 
 
 function doWhat() {
     let fileName = 'random.txt';
@@ -146,7 +141,6 @@ function doWhat() {
       })
 };
 
-/// SWITCH - to activate app
 
 let arg2 = process.argv[2];
 switch (arg2) {
